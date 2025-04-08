@@ -4,7 +4,10 @@ from typing import Any, Callable, Generic, TypeVar
 
 
 def _create_driver() -> DriverBase:
+    for x in backends:
+      print(f"BACKEND: {x}")
     active_drivers = [x.driver for x in backends.values() if x.driver.is_active()]
+    print(f"DRIVERS: {actives[0]()}")
     if len(active_drivers) != 1:
         raise RuntimeError(f"{len(active_drivers)} active drivers ({active_drivers}). There should only be one.")
     return active_drivers[0]()
